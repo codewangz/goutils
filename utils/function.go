@@ -2,6 +2,7 @@ package utils
 
 import (
 	"crypto/md5"
+	"encoding/base64"
 	"encoding/hex"
 	"encoding/json"
 	"regexp"
@@ -360,4 +361,17 @@ func ToFloat64(val interface{}) (result float64) {
 		return 0
 	}
 	return 0
+}
+
+func Base64Encode(str string) string {
+	strbytes := []byte(str)
+	encoded := base64.StdEncoding.EncodeToString(strbytes)
+	return encoded
+}
+
+func IF(condition bool, trueVal, falseVal interface{}) interface{} {
+	if condition {
+		return trueVal
+	}
+	return falseVal
 }

@@ -319,11 +319,35 @@ func MD5(str string) string {
 	return hex.EncodeToString(md5.Sum(nil))
 }
 
+func MapJoin(m map[string]interface{}, split string) (str string) {
+	for _, v := range m {
+		if str != "" {
+			str += split + ItoString(v)
+		} else {
+			str += ItoString(v)
+		}
+	}
+	return
+}
+
+func ToSliceMap(val interface{}) (result []map[string]interface{}) {
+	switch item := val.(type) {
+	case []interface{}:
+		for _, va := range item {
+			switch v := va.(type) {
+			case map[string]interface{}:
+				result = append(result, v)
+			}
+		}
+	}
+	return
+}
+
 func ToFloat64(val interface{}) (result float64) {
 	switch item := val.(type) {
 	case string:
 		result, _ = strconv.ParseFloat(item, 64)
-		return result
+		return
 	case int64:
 		return float64(item)
 	case int:
@@ -336,15 +360,4 @@ func ToFloat64(val interface{}) (result float64) {
 		return 0
 	}
 	return 0
-}
-
-func MapJoin(m map[string]interface{}, split string) (str string) {
-	for _, v := range m {
-		if str != "" {
-			str += split + ItoString(v)
-		} else {
-			str += ItoString(v)
-		}
-	}
-	return
 }

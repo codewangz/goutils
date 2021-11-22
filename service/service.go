@@ -2,6 +2,7 @@ package service
 
 import (
 	"fmt"
+	"goutils/utils"
 	"reflect"
 	"strconv"
 	"strings"
@@ -195,7 +196,7 @@ func Call(service string, params Params) Result {
 	if name == "" {
 		panic(fmt.Errorf("service name error"))
 	}
-	method := arr[1]
+	method := utils.Ucfirst(arr[1])
 	if method == "" {
 		panic(fmt.Errorf("service method error"))
 	}

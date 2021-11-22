@@ -1,7 +1,7 @@
 package databox
 
 import (
-	"goutils/utils"
+	"github.com/codewangz/goutils/utils"
 	"reflect"
 	"strconv"
 	"strings"

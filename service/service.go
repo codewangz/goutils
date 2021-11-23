@@ -2,7 +2,7 @@ package service
 
 import (
 	"fmt"
-	"goutils/utils"
+	"github.com/codewangz/goutils/utils"
 	"reflect"
 	"strconv"
 	"strings"

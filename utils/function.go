@@ -375,3 +375,11 @@ func IF(condition bool, trueVal, falseVal interface{}) interface{} {
 	}
 	return falseVal
 }
+
+func StrReplaceAll(s, old, new string) string {
+	reg, err := regexp.Compile(old)
+	if err != nil {
+		panic(err)
+	}
+	return reg.ReplaceAllString(s, new)
+}

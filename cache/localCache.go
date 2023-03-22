@@ -88,7 +88,7 @@ func (caches localCaches) CallCache(obj interface{}, method string, time time.Du
 	}
 	Method := reflect.ValueOf(obj).MethodByName(method)
 	if Method.Kind() == reflect.Invalid {
-		panic(fmt.Errorf("the object %'s  method %s is not exist", reflect.ValueOf(obj).Type(), method))
+		panic(fmt.Errorf("the object %s method %s is not exist", reflect.ValueOf(obj).Type(), method))
 	}
 	args := make([]reflect.Value, len(params))
 	for key, val := range params {
